@@ -1,24 +1,34 @@
-# vue-php-integration
+# Simple Vue.js-PHP integration
+
+## Overview
+Project showcases simple local php backend + vue frontend.
+
+Front-end sends a single string message to the backend, and the backend sends it back.
+
 
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
+* Requires XAMPP -> Apache module.
+* Extact project to 'C:\xampp\htdocs', so that path to package.json will be 'C:\xampp\htdocs\vue-php-integration\package.json'
+* Inside 'C:\Windows\System32\drivers\etc\hosts' add the lines:
 ```
-npm run serve
+127.0.0.1	vue-php-integration-front.test
+127.0.0.1	vue-php-integration-back.test
 ```
+* Inside 'C:\xampp\apache\conf\extra\httpd-vhosts.conf' add the lines:
+```
+ <VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/vue-php-integration/dist"
+    ServerName vue-php-integration-front.test
+ </VirtualHost>
 
-### Compiles and minifies for production
+  <VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/vue-php-integration/backend"
+    ServerName vue-php-integration-back.test
+ </VirtualHost>
 ```
-npm run build
-```
+* Run the Apache module
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Run Project
+* DEVELOPMENT- run ```npm run serve```
+* PRODUCTION- Input the following URL into the browser: ```vue-php-integration-back.test```
