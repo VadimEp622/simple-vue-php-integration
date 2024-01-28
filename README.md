@@ -32,4 +32,4 @@ Front-end sends a single string message to the backend, and the backend sends it
 
 ## Run Project
 * DEVELOPMENT- run ```npm run serve```
-* PRODUCTION- Input the following URL into the browser: ```vue-php-integration-back.test```
+* PRODUCTION- Input the following URL into the browser: ```vue-php-integration-front.test```
