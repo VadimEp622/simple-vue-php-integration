@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <input type="text" v-model="message" placeholder="Enter a message">
+    <button @click="sendMessage">Send Message</button>
+    {{ nodeEnv }}
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  data() {
+    return {
+      message: '',
+      nodeEnv: process.env.NODE_ENV
+    };
+  },
+  methods: {
+    async sendMessage() {
+      try {
+        const response = await axios.post('http://vue-php-integration-back.test/api.php', {
+          message: this.message
+        });
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+};
+</script>
